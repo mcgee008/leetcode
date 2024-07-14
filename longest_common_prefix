@@ -1,0 +1,16 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        shortest_word = min(strs, key=len)
+    
+        for i in range(len(shortest_word)):
+            # Check if this character is the same in all strings
+            for word in strs:
+                if word[i] != shortest_word[i]:
+                    return shortest_word[:i]
+        
+        return shortest_word
+    
