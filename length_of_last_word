@@ -1,0 +1,40 @@
+# Given a string s consisting of words and spaces, return the length of the last word in string
+import re
+s = "qWnqNICa   ADGZNrBw  DdxMEuhNuvTJaETF   KhKKfVFX"
+
+def getLastWord(s):
+    # first find what the last word is, unknown amount so use While loop
+    ## For every white space, there's a word counter
+    ## terminate while loop when no more white space is found
+    #First check if s is just a space
+    if s == " ":
+        finalCount = 0
+    else:
+        s = s.strip() # removes preceding and ending whitespaces
+        wordCount = 0
+        firstWhiteSpaceFound = False
+        i = 0
+        size = len(s)-1
+        while i < size: 
+            print(s[i]) 
+            #if character is whitespace, increment word counter
+            if s[i] == " ":
+                #first determine if previous char was whitespace, delete extra whitespace, don't count unless its the first whitesapce
+                if firstWhiteSpaceFound == False: 
+                    wordCount = wordCount + 1
+                    firstWhiteSpaceFound = True
+                else:#it's another whitespace, remove it and don't count
+                    s = s[:i] + s[i+1:]
+                    print(s)
+                    i=i-1
+            else:
+               
+                size = len(s)
+                firstWhiteSpaceFound = False #re-initialize back to False since letter is found    
+            i = i+1
+        #split string of words into array of words
+        finalWord = s.split(" ")[wordCount]
+        finalCount = len(finalWord)
+    return finalCount  
+
+getLastWord(s)
