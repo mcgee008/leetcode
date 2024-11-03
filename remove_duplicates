@@ -1,0 +1,13 @@
+def removeDups(nums):
+    size = len(nums)
+    i = 0
+    while i < (size-1):
+        currVal = nums[i]
+        nextVal = nums[i+1]
+        if currVal == nextVal:
+            nums.remove(nextVal)
+            size = len(nums)
+        else:
+            i += 1
+            
+    return len(nums)
