@@ -1,0 +1,29 @@
+# you are climbing staircase. It takes n steps to reach top.
+# each time you can either climb 1 or 2 steps. in how many distinct ways can you climb to the top?
+
+n = 50
+m = 2
+fibo_seq = []
+def get_fibo_seq(n):
+    num1 = 0
+    num2 = 1
+    count = 1
+    fib_seq = []
+
+    while count <= n:
+        next_num = num1 + num2
+        fib_seq.append(next_num)
+        
+        num1 = num2
+        num2 = next_num
+        count += 1
+    return fib_seq
+
+def climb_stairs(m, fibo_seq):
+    total = fibo_seq[m]
+    return total
+
+fibo_seq = get_fibo_seq(n)
+
+totalCount = climb_stairs(m, fibo_seq)
+print(totalCount)
