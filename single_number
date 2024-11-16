@@ -1,0 +1,26 @@
+#Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums_sorted = sorted(nums)
+        i=0
+        while i in range(len(nums_sorted)):
+            val = nums_sorted[i]
+            if len(nums_sorted) == 1:
+                return val
+            else:
+                next = nums_sorted[i+1]
+                if val != next:
+                    return val
+                else:
+                    nums_sorted.remove(val)
+                    nums_sorted.remove(next)
+
+
+        
+nums = [4,1,2,1,2]
+val = Solution().singleNumber(nums)
